@@ -1,30 +1,20 @@
 import React from 'react';
-// import {Appbar, AppBar} from 'react-native-paper';
 import {View, Text, StyleSheet} from 'react-native';
 import Home from './routes/home';
-import WeatherDetail from './routes/home';
-import {NavigationContainer,} from '@react-navigation/native';
-import {createStackNavigator} from 'react-navigation/stack';
-const AppNavigator = createStackNavigator();
+import Detail from './routes/weatherDetail';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 class App extends React.Component{
   render(){
+    const Stack = createStackNavigator();
     return (
       <NavigationContainer>
-        <AppNavigator.Navigator initialRouteName="Home">
-          <AppNavigator.Screen name="Home" component={Home}/>
-          <AppNavigator.Screen name="Detail" component={WeatherDetail}/>
-        </AppNavigator.Navigator>
+        <Stack.Navigator>
+        <Stack.Screen options={{headerShown:false}} name="Home" component={Home} />
+        <Stack.Screen name="Detail" component={Detail}/>
+        </Stack.Navigator>
       </NavigationContainer>
     )
   }
 }
-
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
-})
 export default App;
